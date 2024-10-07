@@ -20,6 +20,11 @@ cd /var/tmp && wget https://www.percona.com/downloads/percona-toolkit/3.0.13/bin
 tar -zxvf percona-toolkit-3.0.13_x86_64.tar.gz
 sudo mv ./percona-toolkit-3.0.13/bin/pt-query-digest /usr/local/bin
 
+## slackcat
+cd /var/tmp && wget https://github.com/bcicen/slackcat/releases/download/v1.6/slackcat-1.6-linux-amd64
+sudo mv slackcat-1.6-linux-amd64 /usr/local/bin/slackcat
+sudo chmod +x /usr/local/bin/slackcat
+
 # setup config
 work_dir=$(pwd)
 config_dir="${work_dir}"/config
