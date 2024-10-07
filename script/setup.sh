@@ -2,6 +2,7 @@
 
 #
 # webapp下で実行する
+# curl -L raw.github.com/swat9013/isucon-lib/main/script/setup.sh | sh
 #
 
 echo "start setup"
@@ -18,7 +19,6 @@ sudo mv ./alp /usr/local/bin
 cd /var/tmp && wget https://www.percona.com/downloads/percona-toolkit/3.0.13/binary/tarball/percona-toolkit-3.0.13_x86_64.tar.gz
 tar -zxvf percona-toolkit-3.0.13_x86_64.tar.gz
 sudo mv ./percona-toolkit-3.0.13/bin/pt-query-digest /usr/local/bin
-
 
 # setup config
 work_dir=$(pwd)
@@ -37,5 +37,18 @@ sudo mv /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.ba
 cd /etc/mysql/mysql.conf.d/ || exit
 sudo ln -s "${config_dir}"/mysqld.cnf .
 
+# script
+script_dir="${work_dir}"/script
+mkdir "${script_dir}"
+curl -L raw.github.com/swat9013/isucon-lib/main/script/deploy.sh >"${script_dir}"/deploy.sh
+chmod +x "${script_dir}"/deploy.sh
+curl -L raw.github.com/swat9013/isucon-lib/main/script/analyze_nginx.sh >"${script_dir}"/analyze_nginx.sh
+chmod +x "${script_dir}"/analyze_nginx.sh
+curl -L raw.github.com/swat9013/isucon-lib/main/script/analyze_mysql.sh >"${script_dir}"/analyze_mysql.sh
+chmod +x "${script_dir}"/analyze_mysql.sh
+
+# git
+rm .gitignore
+curl -L raw.github.com/swat9013/isucon-lib/main/dot/.gitignore >"${work_dir}"/.gitignore
 
 echo "finish setup"
