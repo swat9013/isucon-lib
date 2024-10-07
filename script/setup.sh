@@ -56,4 +56,8 @@ chmod +x "${script_dir}"/analyze_mysql.sh
 rm .gitignore
 curl -L raw.github.com/swat9013/isucon-lib/main/dot/.gitignore >"${work_dir}"/.gitignore
 
+# ruby
+sudo systemctl disable --now isupipe-go.service
+sudo systemctl enable --now isupipe-ruby.service
+
 echo "finish setup"
