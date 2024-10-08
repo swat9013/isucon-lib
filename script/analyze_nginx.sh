@@ -3,10 +3,10 @@
 cd "$(dirname "$0")"/../
 
 export TZ=Asia/Tokyo
-filename=$(date +"%Y%m%d_%H%M%S")
-mkdir -p logs/nginx
-alp json --sort sum -r -m "/posts/[0-9]+,/@\w+,/image/\d+" -o count,method,uri,min,avg,max,sum < /var/log/nginx/access.log > logs/nginx/$filename
-cat logs/nginx/$filename
+log_dir=logs/nginx/$(date +"%Y%m%d_%H%M%S")
+mkdir -p ${log_dir}
+alp json --sort sum -r --file /var/log/nginx/access.log > ${log_dir}/alp.log
+cat  ${log_dir}/alp.log
 
-sudo rm /var/log/nginx/access.log
+sudo mv /var/log/nginx/access.log ${log_dir}/access.log
 sudo nginx -s reload
