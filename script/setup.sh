@@ -62,4 +62,6 @@ curl -L raw.github.com/swat9013/isucon-lib/main/dot/.gitignore >"${work_dir}"/.g
 sudo systemctl disable --now isupipe-go.service
 sudo systemctl enable --now isupipe-ruby.service
 
+sh "${script_dir}"/deploy.sh
+
 echo "finish setup"
