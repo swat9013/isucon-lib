@@ -36,15 +36,11 @@ mkdir "${config_dir}"
 
 ## nginx
 cp /etc/nginx/nginx.conf "${config_dir}"/nginx.conf
-sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
-cd /etc/nginx/ || exit
-sudo ln -s "${config_dir}"/nginx.conf .
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 ## mysql
 cp /etc/mysql/mysql.conf.d/mysqld.cnf "${config_dir}"/mysqld.cnf
-sudo mv /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.bak
-cd /etc/mysql/mysql.conf.d/ || exit
-sudo ln -s "${config_dir}"/mysqld.cnf .
+sudo cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.bak
 
 # script
 script_dir="${work_dir}"/script
