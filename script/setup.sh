@@ -1,9 +1,11 @@
-#!/bin/sh -x
+#!/bin/sh
 
 #
 # webapp下で実行する
 # curl -L raw.github.com/swat9013/isucon-lib/main/script/setup.sh | sh
 #
+
+set -x
 
 echo "start setup"
 work_dir="$HOME/webapp"
