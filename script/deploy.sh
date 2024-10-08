@@ -15,6 +15,7 @@ sudo systemctl stop isupipe-ruby.service
 sudo systemctl start isupipe-ruby.service
 
 # nginx
+sudo rm /var/log/nginx/access.log
 sudo cp ./config/nginx.conf /etc/nginx/nginx.conf
 sudo nginx -s reload
 

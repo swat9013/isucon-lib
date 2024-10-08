@@ -21,7 +21,7 @@ sudo mv ./alp /usr/local/bin
 
 ## pt-query-digest
 ## https://www.percona.com/percona-toolkit
-cd /var/tmp && wget https://www.percona.com/downloads/percona-toolkit/3.0.13/binary/tarball/percona-toolkit-3.6.0_x86_64.tar.gz
+cd /var/tmp && wget https://www.percona.com/downloads/percona-toolkit/3.6.0/binary/tarball/percona-toolkit-3.6.0_x86_64.tar.gz
 tar -zxvf percona-toolkit-3.6.0_x86_64.tar.gz
 sudo mv ./percona-toolkit-3.6.0/bin/pt-query-digest /usr/local/bin
 
