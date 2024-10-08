@@ -6,6 +6,7 @@
 #
 
 echo "start setup"
+work_dir=$(pwd)
 
 # install
 sudo apt-get install -y dstat unzip graphviz
@@ -26,7 +27,6 @@ sudo mv slackcat-1.6-linux-amd64 /usr/local/bin/slackcat
 sudo chmod +x /usr/local/bin/slackcat
 
 # setup config
-work_dir=$(pwd)
 config_dir="${work_dir}"/config
 mkdir "${config_dir}"
 
