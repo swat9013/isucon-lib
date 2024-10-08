@@ -6,7 +6,8 @@
 #
 
 echo "start setup"
-work_dir=$(pwd)
+sudo su - isucon
+work_dir="$HOME/webapp"
 
 # install
 sudo apt-get install -y dstat unzip graphviz
