@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# webapp下で実行する
+# isuconユーザーで実行する
 # curl -L raw.github.com/swat9013/isucon-lib/main/script/setup.sh | sh
 #
 
@@ -63,5 +63,10 @@ sudo systemctl disable --now isupipe-go.service
 sudo systemctl enable --now isupipe-ruby.service
 
 sh "${script_dir}"/deploy.sh
+
+# ssh
+sudo cp /home/ubuntu/.ssh/authorized_keys /home/isucon/.ssh/authorized_keys
+sudo chmod 600 /home/isucon/.ssh/authorized_keys
+sudo chown isucon:isucon /home/isucon/.ssh/authorized_keys
 
 echo "finish setup"
