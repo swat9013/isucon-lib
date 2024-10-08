@@ -6,7 +6,6 @@
 #
 
 echo "start setup"
-sudo su - isucon
 work_dir="$HOME/webapp"
 
 # install
