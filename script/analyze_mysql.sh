@@ -3,7 +3,10 @@
 cd "$(dirname "$0")"/../
 
 export TZ=Asia/Tokyo
-filename=$(date +"%Y%m%d_%H%M%S")
-mkdir -p logs/mysql
-sudo pt-query-digest /var/log/mysql/mysql-slow.log > logs/mysql/$filename
-cat logs/mysql/$filename
+log_dir=logs/mysql/$(date +"%Y%m%d_%H%M%S")
+mkdir -p "${log_dir}"
+sudo pt-query-digest /var/log/mysql/mysql-slow.log >"${log_dir}"/pt.log
+sudo cp /var/log/mysql/mysql-slow.log "${log_dir}"/mysql-slow.log
+
+cat "${log_dir}"/pt.log
+sudo systemctl restart mysql
