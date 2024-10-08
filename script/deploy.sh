@@ -7,7 +7,7 @@ echo "start deploy"
 set -x
 
 # mysql
-sudo cp ./config/mysqld.cnf /etc/mysql/mysqld.cnf
+sudo cp ./config/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo systemctl restart mysql
 
 # ruby
