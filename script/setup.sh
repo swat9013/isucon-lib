@@ -14,7 +14,7 @@ work_dir="$HOME/webapp"
 sudo apt-get install -y dstat unzip graphviz
 
 ## alp
-cd /var/tmp/ && wget https://github.com/tkuchiki/alp/releases/download/v0.4.0/alp_linux_amd64.zip
+cd /var/tmp/ && wget https://github.com/tkuchiki/alp/releases/download/v1.0.21/alp_linux_amd64.zip
 unzip alp_linux_amd64.zip
 sudo mv ./alp /usr/local/bin
 
