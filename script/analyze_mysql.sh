@@ -8,5 +8,4 @@ mkdir -p "${log_dir}"
 sudo pt-query-digest /var/log/mysql/mysql-slow.log >"${log_dir}"/pt.log
 sudo cp /var/log/mysql/mysql-slow.log "${log_dir}"/mysql-slow.log
 
-cat "${log_dir}"/pt.log
 sudo systemctl restart mysql
