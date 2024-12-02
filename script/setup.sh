@@ -8,7 +8,6 @@
 set -x
 
 echo "start setup"
-work_dir="$HOME/webapp"
 
 # install
 sudo apt-get install -y dstat unzip graphviz
@@ -31,19 +30,18 @@ sudo mv slackcat-1.6-linux-amd64 /usr/local/bin/slackcat
 sudo chmod +x /usr/local/bin/slackcat
 
 # setup config
-config_dir="${work_dir}"/config
-mkdir "${config_dir}"
+mkdir $HOME/webapp/config
 
 ## nginx
-cp /etc/nginx/nginx.conf "${config_dir}"/nginx.conf
+cp /etc/nginx/nginx.conf $HOME/webapp/config/nginx.conf
 sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
 
 ## mysql
-cp /etc/mysql/mysql.conf.d/mysqld.cnf "${config_dir}"/mysqld.cnf
+cp /etc/mysql/mysql.conf.d/mysqld.cnf $HOME/webapp/config/mysqld.cnf
 sudo cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.bak
 
 # script
-script_dir="${work_dir}"/script
+script_dir=$HOME/webapp/script
 mkdir "${script_dir}"
 curl -L raw.github.com/swat9013/isucon-lib/main/script/deploy.sh >"${script_dir}"/deploy.sh
 chmod +x "${script_dir}"/deploy.sh
@@ -54,7 +52,7 @@ chmod +x "${script_dir}"/analyze_mysql.sh
 
 # git
 rm .gitignore
-curl -L raw.github.com/swat9013/isucon-lib/main/dot/.gitignore >"${work_dir}"/.gitignore
+curl -L raw.github.com/swat9013/isucon-lib/main/dot/.gitignore >$HOME/webapp/.gitignore
 
 # ruby
 sudo systemctl disable --now isupipe-go.service
