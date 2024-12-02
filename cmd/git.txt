@@ -1,0 +1,9 @@
+cd webapp
+git config --global init.defaultBranch main
+git init
+git add ./
+git config --local user.name "nyan"; git config --local user.email "nyan@example.com"
+git commit -m "first commit"
+
+
+ssh-keygen -t ed25519 -C "nyan@example.com"
