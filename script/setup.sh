@@ -49,6 +49,8 @@ curl -L raw.github.com/swat9013/isucon-lib/main/script/analyze_nginx.sh >"${scri
 chmod +x "${script_dir}"/analyze_nginx.sh
 curl -L raw.github.com/swat9013/isucon-lib/main/script/analyze_mysql.sh >"${script_dir}"/analyze_mysql.sh
 chmod +x "${script_dir}"/analyze_mysql.sh
+curl -L raw.github.com/swat9013/isucon-lib/main/script/analyze_ruby.sh >"${script_dir}"/analyze_ruby.sh
+chmod +x "${script_dir}"/analyze_ruby.sh
 
 # git
 rm .gitignore
