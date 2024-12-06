@@ -10,7 +10,7 @@ set -x
 echo "start setup"
 
 # install
-sudo apt-get install -y dstat unzip graphviz
+sudo apt-get install -y dstat unzip graphviz jq
 
 ## alp
 ## https://github.com/tkuchiki/alp
