@@ -4,6 +4,7 @@
 # app.rb
 require 'estackprof'
 
+# module > class app 下に書く
 use Estackprof::Middleware
 
 # gemfile
