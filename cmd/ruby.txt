@@ -1,8 +1,11 @@
 # [tmm1/stackprof: a sampling call-stack profiler for ruby 2.2+](https://github.com/tmm1/stackprof)
 # ,[fusic/estackprof: Estackprof is a wrapper to make it easier to use Stackprof in your rack application.](https://github.com/fusic/estackprof)
 
-# gemfile
+# app.rb
 require 'estackprof'
+
+# gemfile
+gem 'estackprof'
 
 
 bundle install
