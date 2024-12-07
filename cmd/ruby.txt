@@ -7,11 +7,23 @@ require 'estackprof'
 ...
 module xxxx
   class App < Sinatra::Base
+    # profile
     use Estackprof::Middleware
+
+    # logging
     enable :logging
-    file = File.new("production.log", 'a+')
-    file.sync = true
-    use Rack::CommonLogger, file
+    Dir.mkdir("log") unless File.exist?("log")
+    access_log = File.new("log/access.log","a+")
+    access_log.sync = true
+    use Rack::CommonLogger, access_log
+
+    app_log = File.new("log/application.log", "a+")
+    app_log.sync = true
+    app_logger = Logger.new(app_log)
+
+    before do
+      env["rack.logger"] = app_logger
+    end
 ...
   error HttpError do
     ...
