@@ -13,6 +13,11 @@ module xxxx
     file.sync = true
     use Rack::CommonLogger, file
 ...
+  error HttpError do
+    ...
+    logger.error(e)
+    ...
+
 
 # gemfile
 gem 'estackprof'
