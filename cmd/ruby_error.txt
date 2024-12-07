@@ -1,0 +1,7 @@
+    # [Sinatraのエラーハンドリング - SHOYAN BLOG](https://48n.jp/blog/2016/05/12/error-handling-sinatra/)
+    error StandardError do
+      e = env['sinatra.error']
+      logger.error(e)
+      status e.code
+      json(error: e.message)
+    end
