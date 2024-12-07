@@ -19,6 +19,7 @@ sudo systemctl start isupipe-ruby.service
 
 # nginx
 sudo cp ./config/nginx.conf /etc/nginx/nginx.conf
+# sudo cp ./config/isupipe.conf /etc/nginx/sites-enabled/isupipe.conf
 sudo nginx -s reload
 
 # memcached
