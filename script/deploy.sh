@@ -21,6 +21,9 @@ sudo systemctl start isupipe-ruby.service
 sudo cp ./config/nginx.conf /etc/nginx/nginx.conf
 sudo nginx -s reload
 
+# memcached
+# sudo systemctl restart memcached.service
+
 set +x
 
 echo "finish deploy"

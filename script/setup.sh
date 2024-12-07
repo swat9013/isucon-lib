@@ -11,6 +11,7 @@ echo "start setup"
 
 # install
 sudo apt-get install -y dstat unzip graphviz jq
+# sudo apt-get install -y memcached libmemcached-tools
 
 ## alp
 ## https://github.com/tkuchiki/alp

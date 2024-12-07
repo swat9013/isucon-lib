@@ -1,0 +1,60 @@
+# [isucon11-qualify/ruby/config/memcached_methods.rb at main · sue445/isucon11-qualify](https://github.com/sue445/isucon11-qualify/blob/main/ruby/config/memcached_methods.rb)
+
+# apt
+sudo apt-get install -y memcached
+## 再起動が必要？
+
+# gem
+gem 'dalli'
+
+bundle install
+
+# command
+# [memcached 操作例 (telnetコマンド, ncコマンド編) | ネットワークチェンジニアとして](https://changineer.info/server/nosql/nosql_memchached_commands01.html)
+# [memcached に保存されている key や value の情報を見る #Memcached - Qiita](https://qiita.com/kouhara/items/bb234d2ebef7fda1887b)
+# [memcached と戦う - scramble cadenza](https://mgi.hatenablog.com/entry/2017/09/24/165845)
+
+## telnet
+telnet localhost 11211 # 接続
+stats items # itemの一覧を見る
+stats cachedump 10 100 # slab 10 の item を 100 個 dump する
+flush_all # 全削除
+quit # 抜ける
+
+## nc
+echo 'stats items' | nc localhost 11211
+echo 'stats cachedump [slab] [limit]' | nc localhost 11211
+echo 'get [key]' | nc localhost 11211
+
+## cli
+sudo systemctl restart memcached.service # 再起動。キャッシュ全削除
+
+
+# app.rb
+require 'dalli'
+
+helpers do
+      # 例:
+      # with_memcached(key) do
+      #   process()
+      # end
+      def cache_client
+        Thread.current[:cache_client] ||= Dalli::Client.new('127.0.0.1:11211')
+      end
+
+      def with_memcached(cache_key)
+        begin
+          cached_response = cache_client.get(cache_key)
+          return cached_response if cached_response
+        rescue Dalli::RingError
+        end
+
+        actual = yield
+
+        begin
+          cache_client.set(cache_key, actual)
+        rescue Dalli::RingError
+        end
+
+        actual
+      end
