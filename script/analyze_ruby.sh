@@ -9,4 +9,4 @@ cd ruby
 estackprof list -f app.rb > ../"${log_dir}"/list.txt
 estackprof top -p app.rb -l 30 > ../"${log_dir}"/top.txt
 estackprof flamegraph
-mv ./tmp ../"${log_dir}"/logs
+cp -r ./tmp ../"${log_dir}"/logs
